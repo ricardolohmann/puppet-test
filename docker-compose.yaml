@@ -1,0 +1,25 @@
+version: "3"
+services:
+
+  puppet-server:
+    image: puppet/puppetserver
+    volumes:
+      - ./puppet-modules:/etc/puppetlabs/code
+    networks:
+      puppet:
+        aliases:
+          - puppet
+    ports:
+      - "8140:8140"
+
+  puppet-agent:
+    image: puppet/puppet-agent-alpine
+    networks:
+      puppet:
+        aliases:
+          - puppet-agent
+    depends_on:
+      - puppet-server
+
+networks:
+  puppet:
