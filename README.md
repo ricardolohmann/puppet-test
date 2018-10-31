@@ -8,7 +8,7 @@ Execute Docker Compose with the following command:
 docker-compose up --build
 ```
 
-After that, an error will be raised for the service puppet-agent:
+After that, an error will be raised if you try to add a puppet agent:
 > puppet-agent_1    | Error: Could not request certificate: Failed to open TCP connection to puppet:8140 (Host is unreachable - connect(2) for "puppet" port 8140)
 
 BTW, even with this error, it's possible to acces the Puppet Board on the
@@ -24,13 +24,7 @@ root@puppet:/# hostname
 puppet
 ```
 
-Update the packages and install vi for text editing.
-```shell
-root@puppet:/# apt-get update
-root@puppet:/# apt-get install vi
-```
-
-MOdify the hosts' file to add puppet agents.
+Modify the hosts' file(/puppet/etc/hosts) to add puppet agents.
 ```shell
 root@puppet:/# vi /etc/hosts
 root@puppet:/# cat /etc/hosts
